@@ -41,4 +41,12 @@ d3.csv('data/civil-war.csv').then((data) => {
     .attr('cx', (d, i) => i * xScale.bandwidth())
     .attr('cy', 100)
     .attr('r', 15);
+
+  svg.append('text')
+    .text('Union')
+    .attr('class', 'state')
+    .attr('x', 0)
+    .attr('y', 50)
+    .attr('text-anchor', 'start');
 });
+

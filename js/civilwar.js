@@ -48,5 +48,18 @@ d3.csv('data/civil-war.csv').then((data) => {
     .attr('x', 0)
     .attr('y', 50)
     .attr('text-anchor', 'start');
-});
 
+  unionCircles.on('mouseover', function(d, i) {
+    svg.append('text')
+      .text(d)
+      .attr('x', i * xScale.bandwidth())
+      .attr('y', 80)
+      .attr('text-anchor', 'middle')
+      .attr('class', 'state-label')
+      .attr('id', 'stateName');
+  });
+
+  unionCircles.on('mouseout', function(d) {
+    d3.select('#stateName').remove();
+  })
+});

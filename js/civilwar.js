@@ -61,5 +61,38 @@ d3.csv('data/civil-war.csv').then((data) => {
 
   unionCircles.on('mouseout', function(d) {
     d3.select('#stateName').remove();
-  })
+  });
+
+  const confederateGroup = svg.append('g');
+  
+  const confederateCircles = confederateGroup.selectAll('circle')
+  .data(confederate)
+  .enter()
+  .append('circle')
+  .style('fill', '#848484')
+  .attr('cx', (d, i) => i * xScale.bandwidth())
+  .attr('cy', 300)
+  .attr('r', 15);
+
+  svg.append('text')
+    .text('Confederate')
+    .attr('class', 'state')
+    .attr('x', 0)
+    .attr('y', 250)
+    .attr('text-anchor', 'start');
+
+  confederateCircles.on('mouseover', function(d, i) {
+      svg.append('text')
+        .text(d)
+        .attr('x', i * xScale.bandwidth())
+        .attr('y', 280)
+        .attr('text-anchor', 'middle')
+        .attr('class', 'state-label')
+        .attr('id', 'stateName');
+    });
+
+  confederateCircles.on('mouseout', function(d, i) {
+    d3.select('#statename').remove();
+  });
+
 });

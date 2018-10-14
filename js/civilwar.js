@@ -38,9 +38,15 @@ d3.csv('data/civil-war.csv').then((data) => {
     .enter()
     .append('circle')
     .style('fill', '#2E9AFE')
-    .attr('cx', (d, i) => i * xScale.bandwidth())
+    .style('opacity', '0.1')
     .attr('cy', 100)
     .attr('r', 15);
+  
+  unionCircles
+    .transition()
+    .style('opacity', '1')
+    .attr('cx', (d, i) => i * xScale.bandwidth())
+    .duration(2000);
 
   svg.append('text')
     .text('Union')
@@ -56,7 +62,11 @@ d3.csv('data/civil-war.csv').then((data) => {
       .attr('y', 80)
       .attr('text-anchor', 'middle')
       .attr('class', 'state-label')
-      .attr('id', 'stateName');
+      .attr('id', 'stateName')
+      .transition()
+      .delay(300)
+      .style('font-size', '20px')
+      .duration(1000);
   });
 
   unionCircles.on('mouseout', function(d) {
@@ -70,9 +80,14 @@ d3.csv('data/civil-war.csv').then((data) => {
   .enter()
   .append('circle')
   .style('fill', '#848484')
-  .attr('cx', (d, i) => i * xScale.bandwidth())
   .attr('cy', 300)
   .attr('r', 15);
+
+  confederateCircles
+  .transition()
+  .style('opacity', '1')
+  .attr('cx', (d, i) => i * xScale.bandwidth())
+  .duration(2000);
 
   svg.append('text')
     .text('Confederate')
@@ -92,6 +107,43 @@ d3.csv('data/civil-war.csv').then((data) => {
     });
 
   confederateCircles.on('mouseout', function(d, i) {
+    d3.select('#statename').remove();
+  });
+
+  const borderGroup = svg.append('g');
+  
+  const borderCircles = borderGroup.selectAll('circle')
+  .data(border)
+  .enter()
+  .append('circle')
+  .style('fill', '#F79F81')
+  .attr('cy', 500)
+  .attr('r', 15);
+
+  borderCircles
+  .transition()
+  .style('opacity', '1')
+  .attr('cx', (d, i) => i * xScale.bandwidth())
+  .duration(2000);
+
+  svg.append('text')
+  .text('Border')
+  .attr('class', 'state')
+  .attr('x', 0)
+  .attr('y', 450)
+  .attr('text-anchor', 'start');
+
+  borderCircles.on('mouseover', function(d, i) {
+    svg.append('text')
+      .text(d)
+      .attr('x', i * xScale.bandwidth())
+      .attr('y', 480)
+      .attr('text-anchor', 'middle')
+      .attr('class', 'state-label')
+      .attr('id', 'stateName');
+  });
+
+  borderCircles.on('mouseout', function(d, i) {
     d3.select('#statename').remove();
   });
 

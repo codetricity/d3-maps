@@ -70,8 +70,7 @@ d3.csv('data/civil-war.csv').then((data) => {
       .attr('class', 'state-label')
       .attr('id', 'stateName')
       .transition()
-      .delay(300)
-      .style('font-size', '20px')
+      .style('font-size', '28px')
       .duration(1000);
   });
 

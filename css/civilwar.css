@@ -1,9 +1,14 @@
-.state {
+body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.state {
   font-size: 40px;
 }
 
 .state-label {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 14px;
+}
+
+.chart-title {
+  font-size: 60px;
 }

@@ -33,6 +33,12 @@ d3.csv('data/civil-war.csv').then((data) => {
     .range([0, width])
     .padding(0.1);
 
+  svg.append('text')
+    .text('U.S. Civil War Sides')
+    .attr('x', width/2)
+    .attr('text-anchor', 'middle')
+    .attr('class', 'chart-title');
+
   let unionCircles = svg.selectAll('circle')
     .data(union)
     .enter()

@@ -25,9 +25,19 @@ d3.csv('data/civil-war.csv').then((data) => {
      }
   });
 
-  listAlliance(union);
-  listAlliance(confederate);
-  listAlliance(border);
+  const buttons = d3.selectAll('input');
+  buttons.on('change', function(d) {
+    console.log('button changed to ' + this.value);
+    const selection = this.value;
+    if (selection == 'union') {
+      listAlliance(union);
+    } else if (selection == 'confederate') {
+      listAlliance(confederate);
+    } else if (selection == 'border') {
+      listAlliance(border);
+    }
+
+  });
 });
 
   

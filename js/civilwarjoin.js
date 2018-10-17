@@ -2,6 +2,15 @@ const svg = d3.select('body').append('svg')
   .attr('width', '600')
   .attr('height', '600');
 
+svg.append('image')
+  .attr('xlink:href', 'assets/civilwarmap.jpg')
+  .attr('x', '0')
+  .attr('y', '0')
+  .attr('width', '600')
+  .attr('height', '600')
+  .attr('opacity', '0.2');
+  
+
 
 d3.csv('data/civil-war.csv').then((data) => {
   const union = [];

@@ -53,6 +53,11 @@ d3.csv('data/civil-war.csv').then((data) => {
       background      
       .attr('xlink:href', 'assets/border.png')
       .attr('opacity', '1.0');
+    } else if (selection == 'all') {
+      background      
+      .attr('xlink:href', 'assets/civilwarmap.jpg')
+      .attr('opacity', '0.2');
+      listAllStates(union, confederate, border);
     }
 
   });
@@ -83,4 +88,47 @@ function listAlliance(allianceData) {
     .attr('y', (d, i) => i * 20 + 50);
 }
 
+function listAllStates(union, confederate, border) {
+  svg.selectAll('text').remove();
 
+  svg.append('text')
+  .text('Union')
+  .attr('x', '50')
+  .attr('y', '50')
+  .style('font-weight', 'bold');
+
+  union.forEach((element, i) => {
+    svg.append('text')
+      .text(element)
+      .attr('x', '50')
+      .attr('y', i * 20 + 80);
+  });
+
+  svg.append('text')
+    .text('Confederate')
+    .attr('x', '200')
+    .attr('y', '50')
+    .style('font-weight', 'bold');
+
+  confederate.forEach((element, i) => {
+    svg.append('text')
+    .text(element)
+    .attr('x', '200')
+    .attr('y', i * 20 + 80);
+  });
+
+  svg.append('text')
+  .text('Border')
+  .attr('x', '350')
+  .attr('y', '50')
+  .style('font-weight', 'bold');
+
+  border.forEach((element, i) => {
+    svg.append('text')
+    .text(element)
+    .attr('x', '350')
+    .attr('y', i * 20 + 80);
+});
+  
+
+}

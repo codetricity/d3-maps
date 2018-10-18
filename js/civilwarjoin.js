@@ -1,14 +1,14 @@
 const svg = d3.select('body').append('svg')
   .attr('width', '600')
-  .attr('height', '600');
+  .attr('height', '500');
 
-svg.append('image')
+const background = svg.append('image')
   .attr('xlink:href', 'assets/civilwarmap.jpg')
   .attr('x', '0')
   .attr('y', '0')
   .attr('width', '600')
-  .attr('height', '600')
-  .attr('opacity', '0.2');
+  .attr('height', '500')
+  .attr('opacity', '0.4');
   
 
 
@@ -39,11 +39,20 @@ d3.csv('data/civil-war.csv').then((data) => {
     console.log('button changed to ' + this.value);
     const selection = this.value;
     if (selection == 'union') {
+      background      
+        .attr('xlink:href', 'assets/union.png')
+        .attr('opacity', '1.0');
       listAlliance(union);
     } else if (selection == 'confederate') {
       listAlliance(confederate);
+      background      
+      .attr('xlink:href', 'assets/confederate.png')
+      .attr('opacity', '1.0');
     } else if (selection == 'border') {
       listAlliance(border);
+      background      
+      .attr('xlink:href', 'assets/border.png')
+      .attr('opacity', '1.0');
     }
 
   });

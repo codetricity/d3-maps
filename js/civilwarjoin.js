@@ -41,7 +41,12 @@ d3.csv('data/civil-war.csv').then((data) => {
     if (selection == 'union') {
       background      
         .attr('xlink:href', 'assets/union.png')
-        .attr('opacity', '1.0');
+        .attr('opacity', '0')
+        .attr('x', '-500')
+        .transition()
+        .attr('opacity', '1.0')
+        .attr('x', '0')
+        .duration(900);
       listAlliance(union);
     } else if (selection == 'confederate') {
       listAlliance(confederate);
@@ -94,14 +99,20 @@ function listAllStates(union, confederate, border) {
   svg.append('text')
   .text('Union')
   .attr('x', '50')
+  .style('font-weight', 'bold')
+  .attr('y', '0')
+  .transition()
   .attr('y', '50')
-  .style('font-weight', 'bold');
+  .duration(500);
 
   union.forEach((element, i) => {
     svg.append('text')
       .text(element)
       .attr('x', '50')
-      .attr('y', i * 20 + 80);
+      .attr('y', '0')
+      .transition()      
+      .attr('y', i * 20 + 80)
+      .duration(500);
   });
 
   svg.append('text')
@@ -114,7 +125,10 @@ function listAllStates(union, confederate, border) {
     svg.append('text')
     .text(element)
     .attr('x', '200')
-    .attr('y', i * 20 + 80);
+    .attr('y', '0')
+    .transition()
+    .attr('y', i * 20 + 80)
+    .duration(500);
   });
 
   svg.append('text')
@@ -127,7 +141,10 @@ function listAllStates(union, confederate, border) {
     svg.append('text')
     .text(element)
     .attr('x', '350')
-    .attr('y', i * 20 + 80);
+    .attr('y', '0')
+    .transition()
+    .attr('y', i * 20 + 80)
+    .duration(500);
 });
   
 
